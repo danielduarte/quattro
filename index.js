@@ -142,13 +142,16 @@ window.onload = () => {
     display.innerHTML = nums[n];
   };
 
-  document.onkeydown = () => {
+  const handleUpdate = () => {
     if (showingSolution) {
       newChallenge();
     } else {
       showSolution();
     }
   };
+
+  document.onkeydown = handleUpdate;
+  document.addEventListener('touchend', handleUpdate);
 
   newChallenge();
 };

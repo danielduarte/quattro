@@ -1,0 +1,32 @@
+html, body {
+  background-color: #e7e5e4;
+  height: 100%;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.wrapper {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+}
+
+#display {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: 352px;
+  padding: 80px 50px;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  font-weight: bold;
+  color: #131313;
+  letter-spacing: 0.15em;
+  text-shadow: 5px 5px 5px rgb(150 150 150);
+}
+
+#display.solution {
+  font-size: 142px;
+}

@@ -11,7 +11,7 @@ const params = {
 
 // Sanitize parameters
 const supportedModes = ['random', 'seq'];
-const supportedLangs = ['it', 'es'];
+const supportedLangs = ['it', 'es', 'pt', 'en'];
 if (!supportedModes.includes(params.mode)) { params.mode = supportedModes[0]; }
 if (!supportedLangs.includes(params.lang)) { params.lang = supportedLangs[0]; }
 

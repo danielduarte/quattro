@@ -1,5 +1,5 @@
 html, body {
-  background-color: #e7e5e4;
+  background-color: #ffe1d2;
   height: 100%;
   margin: 0;
 }
@@ -18,15 +18,16 @@ html, body {
 
 #display {
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-  font-size: 42vw;
   text-align: center;
   text-rendering: optimizeLegibility;
   font-weight: bold;
-  color: #131313;
-  text-shadow: 5px 5px 5px rgb(150 150 150);
+  color: #6e0000;
   user-select: none;
+  font-size: 35vw;
+  text-shadow: 15px 11px 14px rgb(25 9 9 / 49%);
 }
 
 #display.solution {
   font-size: 9vw;
+  text-shadow: 3px 3px 5px rgb(25 9 9 / 49%);
 }

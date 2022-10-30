@@ -102,6 +102,10 @@ const nums = [
   'cento',
 ];
 
+// Select mode according to query string params
+let mode = new URL(window.location.href).searchParams.get('mode');
+if (!['random', 'seq'].includes(mode)) { mode = 'random'; }
+
 const toSelect = [];
 
 const init = () => {
@@ -111,7 +115,7 @@ const init = () => {
 };
 
 const generateNum = () => {
-  const index = Math.floor(Math.random() * toSelect.length);
+  const index = mode === 'random' ? Math.floor(Math.random() * toSelect.length) : 0;
   const num = toSelect[index];
   toSelect.splice(index, 1);
   return num;

@@ -1,126 +1,41 @@
-const nums = [
-  'zero',
-  'uno',
-  'due',
-  'tre',
-  'quattro',
-  'cinque',
-  'sei',
-  'sette',
-  'otto',
-  'nove',
-  'dieci',
-  'undici',
-  'dodici',
-  'tredici',
-  'quattordici',
-  'quindici',
-  'sedici',
-  'diciassette',
-  'diciotto',
-  'diciannove',
-  'venti',
-  'ventuno',
-  'ventidue',
-  'ventitré',
-  'ventiquattro',
-  'venticinque',
-  'ventisei',
-  'ventisette',
-  'ventotto',
-  'ventinove',
-  'trenta',
-  'trentuno',
-  'trentadue',
-  'trentatré',
-  'trentaquattro',
-  'trentacinque',
-  'trentasei',
-  'trentasette',
-  'trentotto',
-  'trentanove',
-  'quaranta',
-  'quarantuno',
-  'quarantadue',
-  'quarantatré',
-  'quarantaquattro',
-  'quarantacinque',
-  'quarantasei',
-  'quarantasette',
-  'quarantotto',
-  'quarantanove',
-  'cinquanta',
-  'cinquantuno',
-  'cinquantadue',
-  'cinquantatré',
-  'cinquantaquattro',
-  'cinquantacinque',
-  'cinquantasei',
-  'cinquantasette',
-  'cinquantotto',
-  'cinquantanove',
-  'sessanta',
-  'sessantuno',
-  'sessantadue',
-  'sessantatré',
-  'sessantaquattro',
-  'sessantacinque',
-  'sessantasei',
-  'sessantasette',
-  'sessantotto',
-  'sessantanove',
-  'settanta',
-  'settantuno',
-  'settantadue',
-  'settantatré',
-  'settantaquattro',
-  'settantacinque',
-  'settantasei',
-  'settantasette',
-  'settantotto',
-  'settantanove',
-  'ottanta',
-  'ottantuno',
-  'ottantadue',
-  'ottantatré',
-  'ottantaquattro',
-  'ottantacinque',
-  'ottantasei',
-  'ottantasette',
-  'ottantotto',
-  'ottantanove',
-  'novanta',
-  'novantuno',
-  'novantadue',
-  'novantatré',
-  'novantaquattro',
-  'novantacinque',
-  'novantasei',
-  'novantasette',
-  'novantotto',
-  'novantanove',
-  'cento',
-];
+/**
+ * Author: Daniel Duarte <daniel.duarte@gmail.com>
+ */
 
-// Select mode according to query string params
-let mode = new URL(window.location.href).searchParams.get('mode');
-if (!['random', 'seq'].includes(mode)) { mode = 'random'; }
+// Parse game parameters from query string
+const query = new URL(window.location.href).searchParams;
+const params = {
+  lang: query.get('lang'),
+  mode: query.get('mode'),
+};
+
+// Sanitize parameters
+const supportedModes = ['random', 'seq'];
+const supportedLangs = ['it', 'es'];
+if (!supportedModes.includes(params.mode)) { params.mode = supportedModes[0]; }
+if (!supportedLangs.includes(params.lang)) { params.lang = supportedLangs[0]; }
+
+const loadLang = (callback) => {
+  const langScript = document.createElement('script');
+  langScript.onload = callback;
+  langScript.src = './lang/' + params.lang + '.js';
+  document.head.appendChild(langScript);
+};
 
 const toSelect = [];
 
 const init = () => {
-  for (let i = 0; i < nums.length; i++) {
+  for (let i = 0; i < window.Quattro.nums.length; i++) {
     toSelect.push(i);
   }
 };
 
 const generateNum = () => {
-  const index = mode === 'random' ? Math.floor(Math.random() * toSelect.length) : 0;
+  const index = params.mode === 'random' ? Math.floor(Math.random() * toSelect.length) : 0;
   const num = toSelect[index];
   toSelect.splice(index, 1);
   return num;
 };
-
 
 window.onload = () => {
   const display = document.getElementById('display');
@@ -143,7 +58,7 @@ window.onload = () => {
     showingSolution = true;
 
     display.classList.add('solution');
-    display.innerHTML = nums[n];
+    display.innerHTML = window.Quattro.nums[n];
   };
 
   const handleUpdate = () => {
@@ -157,5 +72,5 @@ window.onload = () => {
   document.addEventListener('keydown', handleUpdate);
   document.addEventListener('click', handleUpdate);
 
-  newChallenge();
+  loadLang(newChallenge);
 };

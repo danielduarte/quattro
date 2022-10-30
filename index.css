@@ -1,6 +1,7 @@
 html, body {
   background-color: #e7e5e4;
   height: 100%;
+  margin: 0;
 }
 
 .main {
@@ -17,16 +18,15 @@ html, body {
 
 #display {
   font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-  font-size: 352px;
-  padding: 80px 50px;
+  font-size: 42vw;
   text-align: center;
   text-rendering: optimizeLegibility;
   font-weight: bold;
   color: #131313;
-  letter-spacing: 0.15em;
   text-shadow: 5px 5px 5px rgb(150 150 150);
+  user-select: none;
 }
 
 #display.solution {
-  font-size: 142px;
+  font-size: 9vw;
 }

@@ -150,8 +150,8 @@ window.onload = () => {
     }
   };
 
-  document.onkeydown = handleUpdate;
-  document.addEventListener('touchend', handleUpdate);
+  document.addEventListener('keydown', handleUpdate);
+  document.addEventListener('click', handleUpdate);
 
   newChallenge();
 };
